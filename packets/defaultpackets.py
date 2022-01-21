@@ -1,73 +1,58 @@
 import struct
-import copy
 from packets.rnppacket import RnpPacket
 
 class TelemetryPacket(RnpPacket):
+    '''Telemetry Packer, Also shows how vars can be used to obtain the structure of the packet. 
+    Constructor parameters also do not matter to serialization/deserialzation'''
 	
     struct_str = '<fffffffffffffffffflBffffffffffffHHfflLQhf'
     size = struct.calcsize(struct_str)
     packet_type = 0
 
-    def __init__(self,
-                pn: float = 0, pe: float = 0, pd: float = 0,
-                vn: float = 0, ve: float = 0, vd: float = 0,
-                an: float = 0, ae: float = 0, ad: float = 0,
-                roll: float = 0, pitch: float = 0, yaw: float = 0,
-                q0: float = 0, q1: float = 0, q2: float = 0, q3:float = 0,
-                lat: float = 0, lng: float = 0, alt: int = 0, sat: int = 0,
-                ax: float = 0, ay: float = 0, az: float = 0,
-                gx: float = 0, gy: float = 0, gz: float = 0,
-                mx: float = 0, my: float = 0, mz: float = 0,
-                baro_temp: float = 0, baro_press: float = 0,baro_alt: float = 0,
-                batt_voltage: int = 0, batt_percent: int = 0,
-                launch_lat: float = 0, launch_lng: float = 0, launch_alt: int = 0,
-                system_status: int = 0,
-                system_time: int = 0,
-                rssi: int = 0, snr: float = 0):
+    def __init__(self):
 
-        self.pn = pn
-        self.pe = pe
-        self.pd = pd
-        self.vn = vn
-        self.ve = ve
-        self.vd = vd
-        self.an = an
-        self.ae = ae
-        self.ad = ad
-        self.roll = roll
-        self.pitch = pitch
-        self.yaw = yaw
-        self.q0 = q0
-        self.q1 = q1
-        self.q2 = q2
-        self.q3 = q3
-        self.lat = lat
-        self.lng = lng
-        self.alt = alt
-        self.sat = sat
-        self.ax = ax
-        self.ay = ay
-        self.az = az
-        self.gx = gx
-        self.gy = gy
-        self.gz = gz
-        self.mx = mx
-        self.my = my
-        self.mz = mz
-        self.baro_temp = baro_temp
-        self.baro_press = baro_press
-        self.baro_alt = baro_alt
-        self.batt_voltage = batt_voltage
-        self.batt_percent = batt_percent
-        self.launch_lat = launch_lat
-        self.launch_lng = launch_lng
-        self.launch_alt = launch_alt
-        self.system_status = system_status
-        self.system_time = system_time
-        self.rssi = rssi
-        self.snr = snr
+        self.pn:float = 0
+        self.pe:float = 0
+        self.pd:float = 0
+        self.vn:float = 0
+        self.ve:float = 0
+        self.vd:float = 0
+        self.an:float = 0
+        self.ae:float = 0
+        self.ad:float = 0
+        self.roll:float = 0
+        self.pitch:float = 0
+        self.yaw:float = 0
+        self.q0:float = 0
+        self.q1:float = 0
+        self.q2:float = 0
+        self.q3:float = 0
+        self.lat:float = 0
+        self.lng:float = 0
+        self.alt:int = 0
+        self.sat:int = 0
+        self.ax:float = 0
+        self.ay:float = 0
+        self.az:float = 0
+        self.gx:float = 0
+        self.gy:float = 0
+        self.gz:float = 0
+        self.mx:float = 0
+        self.my:float = 0
+        self.mz:float = 0
+        self.baro_temp:float = 0
+        self.baro_press:float = 0
+        self.baro_alt:float = 0
+        self.batt_voltage:int = 0
+        self.batt_percent:int = 0
+        self.launch_lat:float = 0
+        self.launch_lng:float = 0
+        self.launch_alt:int = 0
+        self.system_status:int = 0
+        self.system_time:int = 0
+        self.rssi:int = 0
+        self.snr:float = 0
 
-        
         super().__init__(list(vars(self).keys()),
                          TelemetryPacket.struct_str,
                          TelemetryPacket.size,
@@ -79,6 +64,7 @@ class TelemetryPacket(RnpPacket):
         return header_str
 
 class SimpleCommandPacket(RnpPacket):
+    '''Simple Command Packet, shows how to manually add keys to the member variables in the packet'''
     struct_str = '<BI'
     size = struct.calcsize(struct_str)
     packet_type = 0

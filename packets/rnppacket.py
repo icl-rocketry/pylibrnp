@@ -42,7 +42,7 @@ class RnpHeader:
         variable_list = variable_list[1:] #remove start byte
 
         return cls(*variable_list)
-
+  
 
     def serialize(self) -> bytes:
 
@@ -73,7 +73,6 @@ class RnpPacket():
         self.header = RnpHeader(packet_len=self.packet_size,packet_type=self.packet_type)
     
     @classmethod
-    @profile
     def from_bytes(cls,data:bytes):
         '''Default deserialization function using struct str to deserialize a simple c struct. 
             Override this in derived class if a more specialized deserialization is required'''
