@@ -1,5 +1,5 @@
 import struct
-from packets.rnppacket import RnpPacket
+from pylibrnp.rnppacket import RnpPacket
 
 class TelemetryPacket(RnpPacket):
     '''Telemetry Packer, Also shows how vars can be used to obtain the structure of the packet. 
