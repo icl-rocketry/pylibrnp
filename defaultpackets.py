@@ -5,10 +5,10 @@ class TelemetryPacket(RnpPacket):
     '''Telemetry Packer, Also shows how vars can be used to obtain the structure of the packet. 
     Constructor parameters also do not matter to serialization/deserialzation'''
 	
-    struct_str = '<fffffffffffffffffflBffffffffffffHHfflLQhf'
+    struct_str = '<ffffffffffffffffffffflBffffffffffffHHfflLQhf'
     size = struct.calcsize(struct_str)
     packet_type = 0
-
+   
     def __init__(self):
 
         self.pn:float = 0
@@ -34,6 +34,9 @@ class TelemetryPacket(RnpPacket):
         self.ax:float = 0
         self.ay:float = 0
         self.az:float = 0
+        self.h_ax:float = 0
+        self.h_ay:float = 0
+        self.h_az:float = 0
         self.gx:float = 0
         self.gy:float = 0
         self.gz:float = 0
