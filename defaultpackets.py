@@ -5,7 +5,8 @@ class TelemetryPacket(RnpPacket):
     '''Telemetry Packer, Also shows how vars can be used to obtain the structure of the packet. 
     Constructor parameters also do not matter to serialization/deserialzation'''
 	
-    struct_str = '<ffffffffffffffffffffflBffffffffffffHHfflLQhf'
+    struct_str = '<fffffffffffffffffflBfffffffffffffffHHfflLQhf'
+                   
     size = struct.calcsize(struct_str)
     packet_type = 0
    
