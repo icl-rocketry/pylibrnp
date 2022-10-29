@@ -112,5 +112,8 @@ class RnpPacket():
         data_arr += payload_bytes
         return bytes(data_arr)
             
-
+    def getData(self):
+        packet_data_values = copy.deepcopy([vars(self)[key] for key in self.packetvars])
+        #remove header from data
+        return dict(zip(self.packetvars,packet_data_values)) #create dict from 2 lists
 
