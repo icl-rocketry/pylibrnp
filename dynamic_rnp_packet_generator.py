@@ -1,5 +1,5 @@
-from rnppacket import RnpPacket
-from json_rnp_packet_parser import JsonRnpPacketParser
+from pylibrnp.rnppacket import RnpPacket
+from pylibrnp.json_rnp_packet_parser import JsonRnpPacketParser
 
 class DynamicRnpPacketGenerator():
     def __init__(self,classname,json_packet_structure,packet_type = 0): 
