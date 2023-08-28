@@ -88,6 +88,31 @@ class SimpleCommandPacket(RnpPacket):
         param_str = f'SIMPLE COMMAND PACKET BODY: \tcommand = {self.command}\n \t\t\targument = {self.arg}\n'
         return header_str + param_str
 
+class servocalibrate(RnpPacket):
+    '''description'''
+	
+    struct_str = '<BHHH'
+                   
+    size = struct.calcsize(struct_str)
+    packet_type = 105
+   
+    def __init__(self, command: int = 0, angl_min: int = 0, angl_max: int = 0, home_angl: int = 0):
+
+        self.command:int = command
+        self.angl_min:int = angl_min
+        self.angl_max:int = angl_max
+        self.home_angl:int = home_angl
+
+        super().__init__(list(vars(self).keys()),
+                         servocalibrate.struct_str,
+                         servocalibrate.size,
+                         servocalibrate.packet_type)
+
+    def __str__(self):
+        header_str = self.header.__str__() + '\ns'
+        desc_str = f'TELEMETRY PACKET BODY: Havent done this yet oops\n'
+        return header_str
+
 class processedsensorpacket(RnpPacket):
     '''description'''
 	
